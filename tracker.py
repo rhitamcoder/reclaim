@@ -4,7 +4,7 @@ import os
 import random
 from datetime import datetime, timedelta
 
-DATA_FILE = ".tracker_data.json"
+DATA_FILE = "tracker_data.json"
 
 #A list of motivational sentences
 MOTIVATION = [
@@ -19,19 +19,19 @@ MOTIVATION = [
     "Your dopamine levels are resetting. Your future self will thank you for this discomfort.",
     "The world is wide, and your focus is sharp. Keep it that way.",
     "You are the master of the machine, not the other way around.",
-    "An algorithm was designed to breake your will. Today, you broke the algorithm.",
+    "An algorithm was designed to break your will. Today, you broke the algorithm.",
     "Success is built in the moments you choose 'boring' reality over 'exciting' pixels.",
     "You just reclaimed hours of your life. What will you build with them?",
     "Don't trade your long-term goals for a 15-second distraction.",
     "Comparison is the thief of joy. By closing the app, you kept your joy safe.",
-    "Nobody ever looked back on thier life and wished they had watched more shorts.",
+    "Nobody ever looked back on their life and wished they had watched more shorts.",
     "You are a creator, not just a consumer. Go write your own story.",
     "Reels are a filtered version of reality. Today, you lived the unfiltered truth.",
     "Your attention is the currency of the 21st century. Today, you stayed rich.",
     "Your energy is a finite resource. Don't let an algorithm bait you into wasting it on a screen.",
-    "Truely physical strength is the ability to acknowledge an urge and choose not to act on it. You are the boss of your body today.",
+    "Truly physical strength is the ability to acknowledge an urge and choose not to act on it. You are the boss of your body today.",
     "Redirect that physical energy into your growth. Your muscles and your mind have better things to build than a temporary hit of dopamine.",
-    "Provocative pixels are a shadow of reality. Choose the health of your real-world self over the exhausation of a digital fantasy.",
+    "Provocative pixels are a shadow of reality. Choose the health of your real-world self over the exhaustion of a digital fantasy.",
     "Every time you look away, you are rewiring your brain for real connection and lasting discipline. Stand tall today.",
 ]
 
@@ -86,4 +86,3 @@ def update_tracker():
 
 if __name__ == "__main__":
     update_tracker()
-
