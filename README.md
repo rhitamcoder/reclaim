@@ -1,78 +1,73 @@
 # 🛡️ Reclaim
-A lightweight, Python-based CLI tool designed to help you break the habit of scrolling through Instagram Reels and Youtube Shorts. This tool focuses on reclaiming your mental focus and physical health through daily discipline and motivational reinforcement.
 
-## 🌟 Features
-### Streak Tracking: 
-Automatically calculates your daily progress.
+**A command-line streak tracker for breaking free from short-form content and other high-dopamine digital habits.**
 
-### No-Install Design: 
-Runs directly via Python without needing complex packages or pip.
+Reclaim is a simple daily check-in tool. Once a day, it asks whether you stayed away from the habits you're trying to break, tracks your consecutive-day streak, and rewards a successful check-in with a randomly selected motivational message. Miss a day, and the streak resets, giving you a clear, honest signal of your progress over time.
 
-### Randomized Motivation: 
-Provides a different encouraging sentence every day to keep you inspired.
+---
 
-### Health-Focused: 
-Includes specific reminders to stay away from provocative content and preserve your physical energy.
+## ✨ Features
 
-## 🚀 Installation & Setup
-### 1. Download the Tool
-Open your terminal and clone this folder:
+- ✅ **Daily check-in system** — a simple yes/no prompt determines whether your streak continues
+- 🔥 **Streak tracking** — counts consecutive successful days, and resets automatically if a day is missed
+- 🔁 **Once-per-day enforcement** — running the script again on the same day shows your current streak instead of letting you check in twice
+- 💬 **25 randomly selected motivational messages**, shown after each successful check-in to reinforce the habit
+- 💾 **Persistent storage** — your streak and last check-in date are saved locally in a JSON file, so progress survives between runs
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python 3** — built entirely on the standard library (`json`, `os`, `random`, `datetime`)
+
+---
+
+## 📁 Project Structure
+
+```
+reclaim/
+├── tracker.py             # Full tracker logic
+├── tracker_data.json      # Auto-created file storing your streak and last check-in date
+└── README.md
+```
+
+> **Note:** `tracker_data.json` is created automatically the first time you check in, so it doesn't need to exist in the repo beforehand.
+
+---
+
+## ▶️ Getting Started
+
+### Prerequisites
+- Python 3 (pure standard library, nothing else needed)
+
+### Running It
+
 ```
 git clone https://github.com/rhitamcoder/reclaim.git
 ```
-*(Alternatively, click the green **Code** button on Github and select **Download ZIP**.)*
-
-To hide the folder:
 ```
-mv reclaim .reclaim
+cd reclaim
 ```
-
-Then:
 ```
-cd .reclaim
+python tracker.py
 ```
 
-### 2. Make it a Global Command
-To run the tracker by simply typing 'reclaim' from anywhere in your terminal:
-```
-sudo ln -s $(pwd)/tracker.py /usr/local/bin/reclaim && chmod +x tracker.py
-```
+You'll be asked once per day whether you stayed on track. Answer `y` to extend your streak, or `n` to reset it and start fresh tomorrow.
 
-### 🎮 How to Use
-Simply open your terminal and type:
-```
-reclaim
-```
-*If you didn't do the "Global Command" above, you can run it manually inside the folder using:*
-```
-python3 tracker.py
-```
-### The Logic
-**1. Input:** The tool will ask if you successfully avoided Reels/Shorts today.
+---
 
-**2. Reward:** If you enter **'y'**, you get a motivational quote and your streak increases.
+## 🧠 How It Works
 
-**3. Reset:** If you miss a day or enter **'n'**, the streak resets to 0. Discipline is key!
+- **`load_data()` / `save_data()`** read and write your streak and last check-in date to and from `tracker_data.json`
+- **`update_tracker()`** is the core loop:
+  - If you've already checked in today, it just reports your current streak
+  - If you answer `y` and yesterday was your last check-in (or this is your very first check-in), your streak increases by 1
+  - If you answer `y` but a day was missed in between, your streak resets to 1 with a warning
+  - If you answer `n`, your streak resets to 0
+- **`random.choice(MOTIVATION)`** picks one of 25 pre-written motivational messages to display after a successful check-in
 
-### 🛠️ Requirements
-**Python 3.x:** (Installed by default on almost every Linux system).
+---
 
-**Linux/Unix:** Works perfectly on Arch, Ubuntu, Fedora, Mint, (Any Ubuntu-based distros) & MacOS.
+## 📝 License
 
-## 🧠 Why I Built This
-This tool was created to fight the "infinite scroll" addiction that affects out dopamine levels and physical health. By forcing a manual clock check-in every day, we build mindfulness and take back control of our time.
-
-"Your Attention is your most valuable asset. Don't trade your long-term goals for a 30-second distraction."
-
-## 📈 Why use this?
-By using a manual tracker, you are:
-
-**1. Building Mindfulness:** Forcing yourself to consciously acknowledge your progress.
-
-**2. Reclaiming Physical Health:** Turning away from provocative content that drains your energy.
-
-**3. Mastering Discipline:** Proving that you are the master of your machine, not the other way around.
-
-### Contributing:
-Since this is a community-focused tool, feel free to **Fork** this repo and add your own motivational sentences to the code of mine.
-
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
